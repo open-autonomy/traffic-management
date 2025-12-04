@@ -12,7 +12,7 @@ The `TrafficPermissionReleasedV1` message consists of the following properties:
 | Key | Value | Format | Required | Description |
 | --- |:---:|:---:|:---:| --- |
 | `"ZoneId"` | ZoneId | UUID | True | The UUID identifying the zone with the `trafficPermission` policy that the AV is exiting. |
-| `"WayId"` | WayId | Integer | True | The Way ID identifying the road segment (way) that the AV used to exit the zone. (see ISO23725) |
+| `"WayId"` | WayId | Integer | True | The Way ID identifying the road segment (way) that the AV used to enter the zone. (see ISO23725) |
 
 ### TrafficPermissionReleasedV1 Example
 An example `TrafficPermissionReleasedV1` message enclosed in the top-level message header data structure
