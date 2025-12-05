@@ -27,6 +27,7 @@ stateDiagram-v2
     Pending --> Pending : Conditions Unsafe
     Pending --> Granted : Conditions Safe
     Pending --> Rejected : FMS sends TrafficPermissionUpdateV1 (Rejected)
+    Pending --> Released : AV sends TrafficPermissionReleasedV1 sent
     Granted --> Revoked : FMS sends TrafficPermissionUpdateV1 (Revoked)]
     Granted --> Released : AV sends TrafficPermissionReleasedV1 sent
     Released --> [*]
