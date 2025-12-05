@@ -19,7 +19,7 @@ For more information on the messages used in the V1 protocol for managing policy
 
 ## Traffic Permission State Machine
 
-Traffic permissions can be in one of four states: `Pending`, `Granted`, `Released`, `Rejected`, or `Revoked`. The following diagram illustrates the state transitions for traffic permissions:
+Traffic permissions can be in one of five states: `Pending`, `Granted`, `Released`, `Rejected`, or `Revoked`. The following diagram illustrates the state transitions for traffic permissions:
 
 ```mermaid
 stateDiagram-v2
