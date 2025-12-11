@@ -1,10 +1,11 @@
 # TrafficPermissionReleasedV1
 
-This message is sent by an Autonomous Vehicle (AV) to notify the Fleet Management System (FMS) that it has exited a zone with a trafficPermission policy and is releasing its previously granted traffic permission.
+This message is sent by an Autonomous Vehicle (AV) to notify the Fleet Management System (FMS) that it has either exited or no longer requires permission to enter a zone with a trafficPermission policy and is releasing its permission request.
 
 | Sender | Triggered by | Triggers |
 | --- | --- | --- |
-| `AHS`  | AV exiting zone with `trafficPermission` policy | None |
+| `AHS`  | AV exiting zone with `trafficPermission` policy and is releasing its permission request | None |
+| `AHS`  | AV decides not to enter a zone after requesting permission but before actually entering | None |
 
 ## Message Attributes
 The `TrafficPermissionReleasedV1` message consists of the following properties:
