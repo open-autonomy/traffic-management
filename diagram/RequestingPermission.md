@@ -29,7 +29,7 @@ sequenceDiagram
 
 A common scenario involves an Autonomous Vehicle (AV) requesting permission to enter a zone but needing to wait until conditions are safe. In this case, the FMS may initially respond with a `TrafficPermissionUpdateV1` message indicating that the request is `"Pending"`. Once conditions are deemed safe, the FMS will send another `TrafficPermissionUpdateV1` message with the status `"Granted"`.
 
-```
+```mermaid
 sequenceDiagram
 	participant AV as Autonomous Vehicle
 	participant FMS as Fleet Management System
