@@ -88,12 +88,14 @@ In the event of a vehicle restart, the Autonomous Vehicle (AV) must re-establish
 > [!IMPORTANT]
 > After a restart, the AV must not assume that previous permissions are still valid. It must explicitly request permission again to ensure compliance with traffic management policies.
 
+The following diagram illustrates the flow when the AV was outside a zone prior to the restart and can automatically recover permission (the blue box indicates resynchronization of active zones after restart):
+
 ```mermaid
 sequenceDiagram
 	participant AV as Autonomous Vehicle
 	participant FMS as Fleet Management System
 	Note over AV: Vehicle restarts while outside ZoneId XYZ and remains immobile
-	rect rgba(0, 238, 255, 1)
+	rect rgba(36, 235, 225, 1)
 		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
 		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
 		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
@@ -110,7 +112,7 @@ sequenceDiagram
 > [!NOTE]
 > The FMS may require human intervention to manually reauthorizing permissions in situations where automatic recovery is not possible or safe.
 
-The following diagram illustrates the flow when the AV was inside a zone prior to the restart and requires manual intervention to reauthorize permission:
+The following diagram illustrates the flow when the AV was inside a zone prior to the restart and requires manual intervention to reauthorize permission (the blue box indicates resynchronization of active zones after restart):
 
 ```mermaid
 sequenceDiagram
@@ -118,7 +120,7 @@ sequenceDiagram
 	participant FMS as Fleet Management System
 	participant Human as Human Operator
 	Note over AV: Vehicle restarts while inside ZoneId XYZ and remains immobile
-	rect rgba(0, 238, 255, 1)
+	rect rgba(36, 235, 225, 1)
 		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
 		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
 		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
