@@ -64,3 +64,19 @@ sequenceDiagram
 	FMS->>AV: TrafficPermissionUpdateV1 (Status: Released)
 	AV->>FMS: Acknowledge receipt with TrafficPermissionAcknowledgementV1
 ```
+
+The AV may also release permissions prior to receiving a grant, for example if conditions change while waiting.
+
+```mermaid
+sequenceDiagram
+	participant AV as Autonomous Vehicle
+	participant FMS as Fleet Management System
+	AV->>FMS: Send TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
+	FMS->>AV: TrafficPermissionUpdateV1 (Status: Pending)
+	AV->>FMS: Acknowledge receipt with TrafficPermissionAcknowledgementV1
+	Note over AV: Decides not to enter ZoneId XYZ
+	AV->>FMS: Send TrafficPermissionReleasedV1 for ZoneId XYZ
+	Note over FMS: Releases permission for AV to ZoneId XYZ
+	FMS->>AV: TrafficPermissionUpdateV1 (Status: Released)
+	AV->>FMS: Acknowledge receipt with TrafficPermissionAcknowledgementV1
+```
