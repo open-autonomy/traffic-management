@@ -85,11 +85,8 @@ sequenceDiagram
 
 In the event of a vehicle restart, the Autonomous Vehicle (AV) must re-establish its traffic permissions with the Fleet Management System (FMS). The AV should resend any necessary `TrafficPermissionRequestV1` messages for zones it intends to enter (or is inside). The FMS will respond with the appropriate `TrafficPermissionUpdateV1` messages based on the current status of the requests.
 
->![IMPORTANT]
+>![!IMPORTANT]
 > After a restart, the AV must not assume that previous permissions are still valid. It must explicitly request permission again to ensure compliance with traffic management policies.
-
->![NOTE]
-> The FMS may require human intervention to manually reauthorizing permissions in situations where automatic recovery is not possible or safe.
 
 ```mermaid
 sequenceDiagram
@@ -104,7 +101,10 @@ sequenceDiagram
 	Note over AV: Enters ZoneId XYZ via WayId 1005
 ```
 
-The following diagram illustrates the flow when the AV was inside a zone prior to the restart:
+>![!NOTE]
+> The FMS may require human intervention to manually reauthorizing permissions in situations where automatic recovery is not possible or safe.
+
+The following diagram illustrates the flow when the AV was inside a zone prior to the restart and requires manual intervention to reauthorize permission:
 
 ```mermaid
 sequenceDiagram
@@ -113,7 +113,7 @@ sequenceDiagram
 	participant Human as Human Operator
 	Note over AV: Vehicle restarts while inside ZoneId XYZ
 	AV->>FMS: Resend TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
-	Note over FMS: Process request and determine unsafe conditions (e.g., high traffic)
+	Note over FMS: Process request and determine unsafe conditions (e.g., waiting traffic)
 	FMS->>Human: Notify need for manual reauthorization
 	Note over Human: Reviews situation
 	Human->>FMS: Manually reauthorize permission for AV to traverse ZoneId XYZ
