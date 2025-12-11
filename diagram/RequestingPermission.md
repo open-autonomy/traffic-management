@@ -92,9 +92,15 @@ In the event of a vehicle restart, the Autonomous Vehicle (AV) must re-establish
 sequenceDiagram
 	participant AV as Autonomous Vehicle
 	participant FMS as Fleet Management System
-
-	Note over AV: Vehicle restarts while outside ZoneId XYZ
-	AV->>FMS: Resend TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
+	Note over AV: Vehicle restarts while outside ZoneId XYZ and remains immobile
+	rect rgba(0, 238, 255, 1)
+		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
+		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
+		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
+	end
+	Note over AV: Determines it needs permission to enter ZoneId XYZ
+	
+	AV->>FMS: Send TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
 	Note over FMS: Process request and and determine safe conditions
 	FMS->>AV: TrafficPermissionUpdateV1 (Status: Granted)
 	AV->>FMS: Acknowledge receipt with TrafficPermissionAcknowledgementV1
@@ -111,8 +117,14 @@ sequenceDiagram
 	participant AV as Autonomous Vehicle
 	participant FMS as Fleet Management System
 	participant Human as Human Operator
-	Note over AV: Vehicle restarts while inside ZoneId XYZ
-	AV->>FMS: Resend TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
+	Note over AV: Vehicle restarts while inside ZoneId XYZ and remains immobile
+	rect rgba(0, 238, 255, 1)
+		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
+		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
+		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
+	end
+	Note over AV: Determines it is inside the zone and needs permission to enter ZoneId XYZ before it can move
+	AV->>FMS: Send TrafficPermissionRequestV1 for ZoneId XYZ, WayId 1005
 	Note over FMS: Process request and determine unsafe conditions (e.g., waiting traffic)
 	FMS->>Human: Notify need for manual reauthorization
 	Note over Human: Reviews situation
