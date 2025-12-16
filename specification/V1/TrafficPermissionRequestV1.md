@@ -14,7 +14,7 @@ The `TrafficPermissionRequestV1` message consists of the following properties:
 | Key | Value | Format | Required | Description |
 | --- |:---:|:---:|:---:| --- |
 | `"ZoneId"` | ZoneId | UUID | True | The UUID identifying the zone with the `trafficPermission` policy that the AV is requesting permission to enter. |
-| `"WayId"` | WayId | Integer | True | The Way ID identifying the road segment (way) that the AV intends to use to enter the zone. (see ISO23725) If the vehicle is inside the target zone with a `trafficPermission` policy this field should be null.  |
+| `"WayId"` | WayId | Integer or null | True | The Way ID identifying the road segment (way) that the AV intends to use to enter the zone. (see ISO23725) If the vehicle is inside the target zone with a `trafficPermission` policy this field should be `null`.  |
 
 ### TrafficPermissionRequestV1 Example
 

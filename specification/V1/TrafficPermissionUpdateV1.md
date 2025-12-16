@@ -12,7 +12,7 @@ The `TrafficPermissionUpdateV1` message consists of the following properties:
 | --- |:---:|:---:|:---:| --- |
 | `"EventId"` | EventId | UUID | True | A UUID used to correlate this update with an acknowledgement message from the AV. |
 | `"ZoneId"` | ZoneId | UUID | True | The UUID identifying the zone with the `trafficPermission` policy that the AV requested permission to enter. |
-| `"WayId"` | WayId | Integer | True | The Way ID identifying the road segment (way) that the AV intended to use to enter the zone. (see ISO23725) |
+| `"WayId"` | WayId | Integer or null | True | The Way ID identifying the road segment (way) that the AV intended to use to enter the zone. (see ISO23725) This will be set to `null` if the AV specified a `null` value in the request. |
 | `"Status"` | | string | Enum | True | The status of the permission request. Possible values are: <br> - `"Pending"`: The request is being processed. <br> - `"Granted"`: The AV is granted permission to enter the zone. <br> - `"Released"`: The permissions granted the AV have been released. <br> - `"Rejected"`: The AV is denied permission to enter the zone. <br> - `"Revoked"`: Previously granted permission has been revoked. |
 | `"Reason"` | | string | False | An optional description providing additional context for the status, especially in cases of rejection or revocation. |
 
