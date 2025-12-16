@@ -126,7 +126,7 @@ sequenceDiagram
 		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
 	end
 	Note over AV: Determines it is inside the zone and needs permission to enter ZoneId XYZ before it can move
-	AV->>FMS: Send TrafficPermissionRequestV1 for ZoneId XYZ, WayId <i>null</i>
+	AV->>FMS: Send TrafficPermissionRequestV1 for ZoneId XYZ, WayId *null*
 	Note over FMS: Process request and determine unsafe conditions (e.g., waiting traffic)
 	FMS->>Human: Notify need for manual reauthorization
 	Note over Human: Reviews situation
