@@ -51,6 +51,10 @@ All communications protocols selected must be implemented to meet the following 
  - Connections are monitored from both sides
  - Communications are managed asynchronously
 
+## Permissions
+
+The FMS is the source of truth for traffic permissions with respect to zones with a `trafficPermission` policy. The FMS is responsible for granting, rejecting, revoking, and releasing traffic permissions for AVs, and is required to communicate these changes to the AVs in a timely manner.
+
 ## Reporting Vehicle Degradations
 
 In the event that the AV encounters an issue while traversing a zone with a `trafficPermission` policy, it should report the cause of the issue to the FMS using the [MachineDiagnosticV2](https://github.com/open-autonomy/dispatch/blob/main/specification/MachineDiagnosticV2.md) message defined in the [Dispatch Specification](https://github.com/open-autonomy/dispatch/tree/main). This message allows the AV to communicate diagnostic information, including error codes and descriptions, to the FMS for further analysis and resolution.
