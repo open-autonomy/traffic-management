@@ -95,7 +95,7 @@ sequenceDiagram
 	participant AV as Autonomous Vehicle
 	participant FMS as Fleet Management System
 	Note over AV: Vehicle restarts while outside ZoneId XYZ and remains immobile
-	rect rgba(36, 235, 225, 1)
+	rect rgba(0, 0, 128, 1)
 		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
 		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
 		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
@@ -120,7 +120,7 @@ sequenceDiagram
 	participant FMS as Fleet Management System
 	participant Human as Human Operator
 	Note over AV: Vehicle restarts while inside ZoneId XYZ and remains immobile
-	rect rgba(36, 235, 225, 1)
+	rect rgba(0, 0, 128, 1)
 		AV->>FMS: Sends OutOfSyncV1 to trigger a policy zone resynchronization
 		FMS->>AV: Sends SyncActiveZonesRequestV1 with list of active zones
 		AV->>FMS: Sends SyncActiveZonesResponseV1 indcating that it has activated all zones
